@@ -1,10 +1,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-# نسخ كل الملفات الموجودة في الجذر مباشرة
+# نسخ كل الملفات
 COPY . .
 
-# تنفيذ الـ restore والبناء بالاسم المباشر للملف لأنه في الجذر
+# إنشاء مجلد وتثبيت المسار بحيث يتعرف اسم المشروع والـ Namespace تلقائياً
+WORKDIR /src
+
 RUN dotnet restore "MedicalCaravanApp.csproj"
 RUN dotnet build "MedicalCaravanApp.csproj" -c Release -o /app/build
 
