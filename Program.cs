@@ -1,6 +1,8 @@
+namespace MedicalCaravanApp;
+
 using MedicalCaravanApp.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json.Serialization; // 👈 قم بإضافة هذا الـ namespace في بداية الملف
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
