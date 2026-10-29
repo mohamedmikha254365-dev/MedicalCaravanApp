@@ -4,9 +4,11 @@ EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
-COPY ["MedicalCaravanApp.csproj", "./"]
-RUN dotnet restore "MedicalCaravanApp.csproj"
+
+# التعديل هنا: بنسخ كل الملفات في الأول عشان الـ Namespaces والـ Project يشوفوا بعض
 COPY . .
+
+RUN dotnet restore "MedicalCaravanApp.csproj"
 RUN dotnet build "MedicalCaravanApp.csproj" -c Release -o /app/build
 
 FROM build AS publish
